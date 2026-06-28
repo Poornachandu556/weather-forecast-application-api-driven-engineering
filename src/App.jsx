@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { fetchWeather } from './weatherApi.js';
 
 const fallbackCities = ['New York', 'London', 'Tokyo', 'Sydney'];
 
@@ -37,15 +38,7 @@ export default function App() {
       setError('');
 
       try {
-        const response = await fetch(`/api/weather?city=${encodeURIComponent(search)}`, {
-          signal: controller.signal
-        });
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.message || 'Forecast unavailable.');
-        }
-
+        const data = await fetchWeather(search, controller.signal);
         setWeather(data);
         setStatus('success');
       } catch (err) {

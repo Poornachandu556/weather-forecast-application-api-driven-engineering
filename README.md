@@ -9,6 +9,7 @@ React + Express weather forecast app with a backend proxy for OpenWeatherMap and
 - Async/await API integration
 - Environment-based configuration through `.env`
 - Automatic Open-Meteo fallback when no OpenWeatherMap key is configured
+- GitHub Pages deployment with direct Open-Meteo browser forecasts
 - In-memory cache controlled by `CACHE_TTL_SECONDS`
 - Graceful validation, missing-key, city-not-found, and upstream-service errors
 
@@ -41,3 +42,13 @@ React + Express weather forecast app with a backend proxy for OpenWeatherMap and
 The frontend runs at `http://127.0.0.1:5173` and proxies `/api/weather` to the backend at `http://127.0.0.1:5000`.
 
 If `OPENWEATHER_API_KEY` is empty, the backend automatically uses Open-Meteo so searches still return real forecast data.
+
+## GitHub Pages
+
+The site is configured to deploy from GitHub Actions to:
+
+```text
+https://poornachandu556.github.io/weather-forecast-application-api-driven-engineering/
+```
+
+In the GitHub repository, open **Settings > Pages** and set **Build and deployment** to **GitHub Actions**. After the workflow finishes, the website link will be live.
